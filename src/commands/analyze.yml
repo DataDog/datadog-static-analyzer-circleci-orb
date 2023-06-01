@@ -10,17 +10,17 @@ parameters:
     description: The name of the environment variable containing your Datadog application key.
     type: env_var_name
   service:
-    default: DD_SERVICE
-    description: The name of the environment variable containing your specified service.
-    type: env_var_name
+    default: my-service
+    description: The name of the service you want your results tagged with.
+    type: string
   env:
-    default: DD_ENV
-    description: The name of the environment variable containing your specified env.
-    type: env_var_name
+    default: none
+    description: The name of the environment you want your results tagged with.
+    type: string
   site:
-    description: The name of the environment variable containing the site you want results uploaded to.
-    default: DD_SITE
-    type: env_var_name
+    default: datadoghq.com
+    description: The name of the site you want your results uploaded to.
+    type: string
   
 steps:
   - run:

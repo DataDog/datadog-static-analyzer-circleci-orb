@@ -14,9 +14,7 @@ usage:
         - datadog-static-analysis/analyze:
             api_key: DD_API_KEY
             app_key: DD_APP_KEY
-            service: DD_SERVICE
-            env: DD_ENV
-            site: DD_SITE
+            service: my-service
   workflows:
     main:
       jobs:
