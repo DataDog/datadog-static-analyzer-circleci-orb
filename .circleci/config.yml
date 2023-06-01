@@ -20,7 +20,7 @@ workflows:
       - shellcheck/check:
           filters: *filters
       - orb-tools/publish:
-          orb_name: DataDog/datadog-static-analyzer-circleci-orb
+          orb_name: datadog/datadog-static-analyzer-circleci-orb
           vcs_type: << pipeline.project.type >>
           requires:
             [orb-tools/lint, orb-tools/review, orb-tools/pack, shellcheck/check]

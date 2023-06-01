@@ -2,7 +2,7 @@ description: >
   Use the Datadog Static Analyzer to analyze your code and upload the results to Datadog.
 
 usage:
-  version: '2.1'
+  version: 2.1
   orbs:
     datadog-static-analysis: datadog/datadog-static-analyzer-circleci-orb@1.0.0
   jobs:

@@ -22,7 +22,7 @@ Create a file in `.circleci` to run a Datadog static analysis.
 Here's a sample workflow file.
 
 ```yaml
-version: '2.1'
+version: 2.1
 orbs:
   datadog-static-analysis: datadog/datadog-static-analyzer-circleci-orb@1.0.0
 jobs:
