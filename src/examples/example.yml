@@ -1,0 +1,23 @@
+description: >
+  Use the Datadog Static Analyzer to analyze your code and upload the results to Datadog.
+
+usage:
+  version: '2.1'
+  orbs:
+    datadog-static-analysis: datadog/datadog-static-analyzer-circleci-orb@1.0.0
+  jobs:
+    run-static-analysis-job:
+      docker:
+        - image: cimg/node:current
+      steps:
+        - checkout
+        - datadog-static-analysis/analyze:
+            api_key: DD_API_KEY
+            app_key: DD_APP_KEY
+            service: DD_SERVICE
+            env: DD_ENV
+            site: DD_SITE
+  workflows:
+    main:
+      jobs:
+        - run-static-analysis-job

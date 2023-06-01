@@ -1,0 +1,8 @@
+version: 2.1
+
+description: >
+  Analyze your code with the Datadog Static Analyzer and upload the results to Datadog
+
+display:
+  home_url: "https://docs.datadoghq.com/continuous_integration/"
+  source_url: "https://github.com/DataDog/datadog-static-analyzer-circleci-orb"
