@@ -5,7 +5,7 @@
 
 Run a Datadog Static Analysis in your CircleCI workflows.
 
-## Preliminary
+## Requirements
 
 To use the Datadog static analyzer, you need to add a `static-analysis.datadog.yml` file to your repositories root directory that specifies what rulesets to use.
 
@@ -13,6 +13,17 @@ To use the Datadog static analyzer, you need to add a `static-analysis.datadog.y
 rulesets:
   - <ruleset-name>
   - <ruleset-name>
+```
+
+#### Example for Python
+
+You can see an example for repositories based on Python:
+
+```yaml
+rulesets:
+  - python-security
+  - python-code-style
+  - python-best-practices
 ```
 
 ## Workflow
@@ -31,32 +42,24 @@ jobs:
       - image: cimg/node:current
     steps:
       - checkout
-      - datadog-static-analysis/analyze:
-          api_key: DD_API_KEY
-          app_key: DD_APP_KEY
-          service: DD_SERVICE
-          env: DD_ENV
-          site: DD_SITE
+      - datadog-static-analysis/analyze
 workflows:
   main:
     jobs:
       - run-static-analysis-job
 ```
 
-## Environment Configuration
+## Environment Variables
+
+These environments should be set in the [CircleCI Project Settings](https://circleci.com/docs/set-environment-variable/#set-an-environment-variable-in-a-project) page.
 
 | Name         | Description                                                                                                                | Required | Default         |
 |--------------|----------------------------------------------------------------------------------------------------------------------------|----------|-----------------|
-| `DD_API_KEY` | Your Datadog API key. This key is created by your [Datadog organization][1] and should be stored as a [secret][2].         | True     |                 |
-| `DD_APP_KEY` | Your Datadog Application key. This key is created by your [Datadog organization][1] and should be stored as a [secret][2]. | True     |                 |
+| `DD_API_KEY` | Your Datadog API key. This key is created by your [Datadog organization](https://docs.datadoghq.com/account_management/api-app-keys/#api-keys) and should be stored as a secret.                   | True     |                 |
+| `DD_APP_KEY` | Your Datadog Application key. This key is created by your [Datadog organization](https://docs.datadoghq.com/account_management/api-app-keys/#application-keys) and should be stored as a secret.           | True     |                 |
 | `DD_SERVICE` | The service you want your results tagged with.                                                                             | True     |                 |
-| `DD_ENV`     | The environment you want your results tagged with.                                                                         | True     |                 |
-| `DD_SITE`    | The Datadog site. For users in the EU, set to `datadoghq.eu`.                                                              | False    | `datadoghq.com` |
-
-
-### Secrets Example
-
-![Token](imgs/circleci-secrets.jpeg)
+| `DD_ENV`     | The environment you want your results tagged with.                                                                         | False    |   `none`        |
+| `DD_SITE`    | The [Datadog site](https://docs.datadoghq.com/getting_started/site/)                                                       | False    | `datadoghq.com` |
 
 ## Resources
 

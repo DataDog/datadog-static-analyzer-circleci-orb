@@ -1,34 +1,7 @@
 description: >
   This command analyzes your code and upload the results to Datadog.
-parameters:
-  api_key:
-    default: DD_API_KEY
-    description: The name of the environment variable containing your Datadog API key.
-    type: env_var_name
-  app_key:
-    default: DD_APP_KEY
-    description: The name of the environment variable containing your Datadog application key.
-    type: env_var_name
-  service:
-    default: DD_SERVICE
-    description: The name of the environment variable containing your specified service.
-    type: env_var_name
-  env:
-    default: DD_ENV
-    description: The name of the environment variable containing your specified env.
-    type: env_var_name
-  site:
-    description: The name of the environment variable containing the site you want results uploaded to.
-    default: DD_SITE
-    type: env_var_name
   
 steps:
   - run:
-      environment:
-        DD_API_KEY: <<parameters.api_key>>
-        DD_APP_KEY: <<parameters.app_key>>
-        DD_SERVICE: <<parameters.service>>
-        DD_ENV: <<parameters.env>>
-        DD_SITE: <<parameters.site>>
       name: Datadog Static Analysis
       command: <<include(scripts/analyze.sh)>>
