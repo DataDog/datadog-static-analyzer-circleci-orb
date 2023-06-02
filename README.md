@@ -51,7 +51,7 @@ workflows:
 
 ## Environment Variables
 
-These environments should be set in the [CircleCI Project Settings](https://circleci.com/docs/set-environment-variable/#set-an-environment-variable-in-a-project) page.
+These environment variables should be set in the [CircleCI Project Settings](https://circleci.com/docs/set-environment-variable/#set-an-environment-variable-in-a-project) page.
 
 | Name         | Description                                                                                                                | Required | Default         |
 |--------------|----------------------------------------------------------------------------------------------------------------------------|----------|-----------------|
