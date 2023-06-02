@@ -1,7 +1,23 @@
 description: >
   This command analyzes your code and upload the results to Datadog.
-  
+parameters:
+  service:
+    type: string
+    description: The name of the service you want your results tagged with.
+    default: ""
+  env:
+    type: string
+    description: The name of the environment you want your results tagged with.
+    default: "none"
+  site:
+    type: string
+    description: The name of the site you want your results uploaded to.
+    default: "datadoghq.com"
 steps:
   - run:
+      environment:
+        DD_SERVICE: <<parameters.service>>
+        DD_ENV: <<parameters.env>>
+        DD_SITE: <<parameters.site>>
       name: Datadog Static Analysis
       command: <<include(scripts/analyze.sh)>>

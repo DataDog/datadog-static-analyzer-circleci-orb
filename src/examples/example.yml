@@ -11,7 +11,8 @@ usage:
         - image: cimg/node:current
       steps:
         - checkout
-        - datadog-static-analysis/analyze
+        - datadog-static-analysis/analyze:
+            service: my-service
   workflows:
     main:
       jobs:
