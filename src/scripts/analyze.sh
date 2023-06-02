@@ -59,8 +59,7 @@ if [ -z "$DD_APP_KEY" ]; then
 fi
 
 if [ -z "$DD_ENV" ]; then
-    echo "DD_ENV not set. Please set this variable and try again."
-    exit 1
+    DD_ENV=none
 fi
 
 if [ -z "$DD_SERVICE" ]; then
