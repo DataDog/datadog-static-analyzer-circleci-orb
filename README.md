@@ -4,7 +4,7 @@
 
 ## Overview
 
-Run a Datadog Static Analysis test in your CircleCI workflows.
+Run a Datadog Static Analysis job in your CircleCI workflows.
 
 ## Setup
 
@@ -29,7 +29,7 @@ rulesets:
 
 ## Workflow
 
-Create a file in `.circleci` to run a Datadog Static Analysis test.
+Create a file in `.circleci` to run a Datadog Static Analysis job.
 
 The following is a sample workflow file.
 
@@ -67,8 +67,8 @@ To customize your workflow, you can set the following parameters for Static Anal
 | Name         | Description                                                                                                                | Required | Default         |
 |--------------|----------------------------------------------------------------------------------------------------------------------------|----------|-----------------|
 | `service` | The service you want your results tagged with.                                                                                | True     |                 |
-| `env`     | The environment you want your results tagged with.                                                                            | False    | `none`          |
-| `site`    | The [Datadog site][4] to send information to.                                                                                 | False    | `datadoghq.com` |
+| `env`     | The environment you want your results tagged with. Datadog recommends using `ci` as the value for this input.                 | False    | `none`          |
+| `site`    | The [Datadog site][4] to send information to. You are currently viewing the documentation for the {{< region-param key="dd_site_name" code="true" >}} site, for which the correct value for this input would be {{< region-param key="dd_site" code="true" >}}                                                                               | False    | `datadoghq.com` |
 
 ## Further Reading
 
