@@ -55,10 +55,10 @@ workflows:
 
 Set the following environment variables in the [CircleCI Project Settings page][1].
 
-| Name         | Description                                                                                                                | Required | Default         |
-|--------------|----------------------------------------------------------------------------------------------------------------------------|----------|-----------------|
-| `DD_API_KEY` | Your Datadog API key. This key is created by your [Datadog organization][2] and should be stored as a secret.              | True     |                 |
-| `DD_APP_KEY` | Your Datadog application key. This key is created by your [Datadog organization][3] and should be stored as a secret.      | True     |                 |
+| Name         | Description                                                                                                                | Required |
+|--------------|----------------------------------------------------------------------------------------------------------------------------|----------|
+| `DD_API_KEY` | Your Datadog API key. This key is created by your [Datadog organization][2] and should be stored as a secret.              | True     |
+| `DD_APP_KEY` | Your Datadog application key. This key is created by your [Datadog organization][3] and should be stored as a secret.      | True     |
 
 ## Inputs
 
