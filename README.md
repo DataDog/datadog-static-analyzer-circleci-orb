@@ -4,7 +4,7 @@
 
 ## Overview
 
-Run a Datadog Static Analysis test in your CircleCI workflows.
+Run a Datadog Static Analysis job in your CircleCI workflows.
 
 ## Setup
 
@@ -22,14 +22,14 @@ You can see an example for Python-based repositories:
 
 ```yaml
 rulesets:
-  - python-security
   - python-code-style
   - python-best-practices
+  - python-inclusive
 ```
 
 ## Workflow
 
-Create a file in `.circleci` to run a Datadog Static Analysis test.
+Create a file in `.circleci` to run a Datadog Static Analysis job.
 
 The following is a sample workflow file.
 
@@ -55,10 +55,10 @@ workflows:
 
 Set the following environment variables in the [CircleCI Project Settings page][1].
 
-| Name         | Description                                                                                                                | Required | Default         |
-|--------------|----------------------------------------------------------------------------------------------------------------------------|----------|-----------------|
-| `DD_API_KEY` | Your Datadog API key. This key is created by your [Datadog organization][2] and should be stored as a secret.              | True     |                 |
-| `DD_APP_KEY` | Your Datadog application key. This key is created by your [Datadog organization][3] and should be stored as a secret.      | True     |                 |
+| Name         | Description                                                                                                                | Required |
+|--------------|----------------------------------------------------------------------------------------------------------------------------|----------|
+| `DD_API_KEY` | Your Datadog API key. This key is created by your [Datadog organization][2] and should be stored as a secret.              | Yes     |
+| `DD_APP_KEY` | Your Datadog application key. This key is created by your [Datadog organization][3] and should be stored as a secret.      | Yes     |
 
 ## Inputs
 
@@ -66,9 +66,9 @@ To customize your workflow, you can set the following parameters for Static Anal
 
 | Name         | Description                                                                                                                | Required | Default         |
 |--------------|----------------------------------------------------------------------------------------------------------------------------|----------|-----------------|
-| `service` | The service you want your results tagged with.                                                                                | True     |                 |
-| `env`     | The environment you want your results tagged with.                                                                            | False    | `none`          |
-| `site`    | The [Datadog site][4] to send information to.                                                                                 | False    | `datadoghq.com` |
+| `service` | The service you want your results tagged with.                                                                                | Yes     |                 |
+| `env`     | The environment you want your results tagged with. Datadog recommends using `ci` as the value for this input.                 | No    | `none`          |
+| `site`    | The [Datadog site][4] to send information to. Your Datadog site is {{< region-param key="dd_site" code="true" >}}.                                                                               | No    | {{< region-param key="dd_site" code="true" >}}   |
 
 ## Further Reading
 
