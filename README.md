@@ -21,9 +21,9 @@ You can see an example for repositories based on Python:
 
 ```yaml
 rulesets:
-  - python-security
   - python-code-style
   - python-best-practices
+  - python-inclusive
 ```
 
 ## Workflow
