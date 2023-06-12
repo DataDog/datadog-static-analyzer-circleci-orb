@@ -68,7 +68,7 @@ To customize your workflow, you can set the following parameters for Static Anal
 |--------------|----------------------------------------------------------------------------------------------------------------------------|----------|-----------------|
 | `service` | The service you want your results tagged with.                                                                                | Yes     |                 |
 | `env`     | The environment you want your results tagged with. Datadog recommends using `ci` as the value for this input.                 | No    | `none`          |
-| `site`    | The [Datadog site][4] to send information to. Your Datadog site is {{< region-param key="dd_site" code="true" >}}.                                                                               | No    | {{< region-param key="dd_site" code="true" >}}   |
+| `site`    | The [Datadog site][4] to send information to.                                                                                 | No    | `datadoghq.com` |
 
 ## Further Reading
 
