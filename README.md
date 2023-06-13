@@ -68,16 +68,9 @@ To customize your workflow, you can set the following parameters for Static Anal
 |--------------|----------------------------------------------------------------------------------------------------------------------------|----------|-----------------|
 | `service` | The service you want your results tagged with.                                                                                | Yes     |                 |
 | `env`     | The environment you want your results tagged with. Datadog recommends using `ci` as the value for this input.                 | No    | `none`          |
-| `site`    | The [Datadog site][4] to send information to.                                                                                 | No    | `datadoghq.com` |
-
-## Further Reading
-
-Additional helpful documentation, links, and articles:
-
-- [Static Analysis Configuration][5]
+| `site`    | The [Datadog site][4] to send information to.                                                                                 | No    | `datadoghq.com` | 
 
 [1]: https://circleci.com/docs/set-environment-variable/#set-an-environment-variable-in-a-project
 [2]: https://docs.datadoghq.com/account_management/api-app-keys/#api-keys
 [3]: https://docs.datadoghq.com/account_management/api-app-keys/#application-keys
 [4]: https://docs.datadoghq.com/getting_started/site/
-[5]: https://docs.datadoghq.com/continuous_integration/static_analysis/configuration/
