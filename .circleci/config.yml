@@ -32,6 +32,7 @@ workflows:
       
       # Trigger the next workflow, test-deploy, in our case
       - orb-tools/continue:
+          orb_name: datadog/datadog-static-analyzer-circleci-orb
           pipeline_number: << pipeline.number >>
           vcs_type: << pipeline.project.type >>
           requires:
