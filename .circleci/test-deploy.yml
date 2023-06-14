@@ -1,32 +1,36 @@
 version: 2.1
-setup: true
 orbs:
   orb-tools: circleci/orb-tools@12.0
   shellcheck: circleci/shellcheck@3.1
 
+# always run checks
 filters: &filters
   tags:
     only: /.*/
+
+# only run on release tags
+release-filters: &release-filters
+  branches:
+    ignore: /.*/
+  tags:
+    # https://circleci.com/docs/workflows/#executing-workflows-for-a-git-tag
+    only: /^v[0-9]+\.[0-9]+\.[0-9]+$/
 
 workflows:
   test-deploy:
     jobs:
       - orb-tools/pack:
           filters: *filters
+      
       # Publish a production version of the orb.
       - orb-tools/publish:
           orb_name: datadog/datadog-static-analyzer-circleci-orb
-          vcs-type: << pipeline.project.type >>
+          vcs_type: << pipeline.project.type >>
           # Use a context to hold your publishing token.
           context: orb-publishing-static-analyzer
-          pub-type: production
-          enable-pr-comment: false
+          pub_type: production
+          enable_pr_comment: false
+          # Ensure this we run test and run the pack job
           requires:
             - orb-tools/pack
-          # Run only for semantic tags
-          # https://circleci.com/docs/workflows/#executing-workflows-for-a-git-tag
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /^v[0-9]+\.[0-9]+\.[0-9]+$/
+          filters: *release-filters
