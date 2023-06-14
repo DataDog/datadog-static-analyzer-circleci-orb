@@ -29,7 +29,7 @@ workflows:
           # Use a context to hold your publishing token.
           context: orb-publishing-static-analyzer
           pub_type: production
-          enable-pr-comment: false
+          enable_pr_comment: false
           # Ensure this we run test and run the pack job
           requires:
             - orb-tools/pack
