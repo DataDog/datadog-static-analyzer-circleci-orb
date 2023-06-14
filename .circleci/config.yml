@@ -19,6 +19,8 @@ workflows:
           filters: *filters
       - shellcheck/check:
           filters: *filters
+      
+      # Publish a development version of the orb as dev:alpha and dev:${COMMIT_SHA}
       - orb-tools/publish:
           orb_name: datadog/datadog-static-analyzer-circleci-orb
           vcs_type: << pipeline.project.type >>
@@ -26,4 +28,12 @@ workflows:
             [orb-tools/lint, orb-tools/review, orb-tools/pack, shellcheck/check]
           # Use a context to hold your publishing token.
           context: orb-publishing-static-analyzer
+          filters: *filters
+      
+      # Trigger the next workflow, test-deploy, in our case
+      - orb-tools/continue:
+          pipeline_number: << pipeline.number >>
+          vcs_type: << pipeline.project.type >>
+          requires:
+            - orb-tools/publish
           filters: *filters
