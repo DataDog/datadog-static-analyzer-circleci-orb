@@ -6,6 +6,8 @@
 
 Run a Datadog Static Analysis job in your CircleCI workflows.
 
+Static Analysis is in private beta. To request access, [contact Support][5].
+
 ## Setup
 
 To use Datadog Static Analysis, you need to add a `static-analysis.datadog.yml` file in your repository's root directory to specify which rulesets to use.
@@ -74,3 +76,4 @@ To customize your workflow, you can set the following parameters for Static Anal
 [2]: https://docs.datadoghq.com/account_management/api-app-keys/#api-keys
 [3]: https://docs.datadoghq.com/account_management/api-app-keys/#application-keys
 [4]: https://docs.datadoghq.com/getting_started/site/
+[5]: https://docs.datadoghq.com/help/
