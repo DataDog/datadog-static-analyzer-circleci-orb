@@ -128,7 +128,7 @@ $CLI_LOCATION --directory "${PROJECT_ROOT}" -t true -o "${OUTPUT_FILE}" -f sarif
 echo "done"
 
 # navigate to project root, so the datadog-ci command can access the git info
-cd ${PROJECT_ROOT}
+cd "$PROJECT_ROOT" || exit 1
 git config --global --add safe.directory ${PROJECT_ROOT}
 
 echo -n "Uploading results to Datadog ..."
