@@ -129,7 +129,7 @@ echo "done"
 
 # navigate to project root, so the datadog-ci command can access the git info
 cd "$PROJECT_ROOT" || exit 1
-git config --global --add safe.directory ${PROJECT_ROOT}
+git config --global --add safe.directory "${PROJECT_ROOT}"
 
 echo -n "Uploading results to Datadog ..."
 ${DATADOG_CLI_PATH} sarif upload "${OUTPUT_FILE}" --service "${DD_SERVICE}" --env "$DD_ENV"
