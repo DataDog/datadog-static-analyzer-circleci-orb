@@ -38,7 +38,7 @@ The following is a sample workflow file.
 ```yaml
 version: 2.1
 orbs:
-  datadog-static-analysis: datadog/datadog-static-analyzer-circleci-orb@1.0.0
+  datadog-static-analysis: datadog/datadog-static-analyzer-circleci-orb@1
 jobs:
   run-static-analysis-job:
     docker:
