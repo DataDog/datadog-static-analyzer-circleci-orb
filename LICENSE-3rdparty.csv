@@ -2,3 +2,4 @@ Component,Origin,License,Copyright
 @datadog/datadog-ci,core,Apache-2.0,"Copyright 2019-Present Datadog, Inc."
 openjdk-17-jdk,core,GPL-2.0,"Copyright 2023 Oracle Corporation and/or its affiliates"
 unzip,core,BSD-3-Clause,"Copyright (c) 1990-2009 Info-ZIP. All rights reserved"
+git,https://github.com/git/git,GPL-2.0,© 2005-2023, Linus Torvalds and others.

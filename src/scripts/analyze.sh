@@ -43,6 +43,7 @@ echo -n "Install dependencies ... "
 sudo apt-get update >/dev/null 2>&1
 sudo apt-get install --yes openjdk-17-jdk >/dev/null 2>&1
 sudo apt-get install --yes unzip >/dev/null 2>&1
+sudo apt-get install --yes git >/dev/null 2>&1
 echo "done"
 
 ########################################################
@@ -126,6 +127,9 @@ echo -n "Starting a static analysis ..."
 $CLI_LOCATION --directory "${PROJECT_ROOT}" -t true -o "${OUTPUT_FILE}" -f sarif || exit 1
 echo "done"
 
+# navigate to project root, so the datadog-ci command can access the git info
+cd "$PROJECT_ROOT" || exit 1
+git config --global --add safe.directory "${PROJECT_ROOT}" || exit 1
 
 echo -n "Uploading results to Datadog ..."
 ${DATADOG_CLI_PATH} sarif upload "${OUTPUT_FILE}" --service "${DD_SERVICE}" --env "$DD_ENV"
