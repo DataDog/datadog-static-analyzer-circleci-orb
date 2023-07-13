@@ -92,7 +92,7 @@ echo "done"
 # datadog-ci stuff
 ########################################################
 echo -n "Install datadog-ci ..."
-sudo /usr/local/bin/npm install -g @datadog/datadog-ci || exit 1
+sudo /usr/local/bin/npm install -g @datadog/datadog-ci@2.16.1 || exit 1
 
 DATADOG_CLI_PATH=/usr/local/bin/datadog-ci
 
@@ -102,6 +102,7 @@ if [ ! -x $DATADOG_CLI_PATH ]; then
     exit 1
 fi
 echo "done: datadog-ci available $DATADOG_CLI_PATH"
+echo "Version: $($DATADOG_CLI_PATH version)"
 
 ########################################################
 # output directory
