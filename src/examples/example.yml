@@ -13,6 +13,8 @@ usage:
         - checkout
         - datadog-static-analysis/analyze:
             service: my-service
+            cpu_count: 2
+            enable_performance_statistics: false
   workflows:
     main:
       jobs:
