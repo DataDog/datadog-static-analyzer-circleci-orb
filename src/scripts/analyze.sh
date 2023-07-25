@@ -69,6 +69,17 @@ if [ -z "$DD_SERVICE" ]; then
     exit 1
 fi
 
+if [ -z "$CPU_COUNT" ]; then
+    # the default CPU count is 2
+    CPU_COUNT=2
+fi
+
+if [ "$ENABLE_PERFORMANCE_STATISTICS" = "true" ]; then
+    ENABLE_PERFORMANCE_STATISTICS="--performance-statistics"
+else 
+    ENABLE_PERFORMANCE_STATISTICS=""
+fi
+
 PROJECT_ROOT=$(pwd)
 
 ########################################################
@@ -83,10 +94,9 @@ if [ ! -d "$TOOL_DIRECTORY" ]; then
 fi
 
 cd "$TOOL_DIRECTORY" || exit 1
-curl -L -O http://dtdg.co/latest-static-analyzer >/dev/null 2>&1 || exit 1
-unzip latest-static-analyzer > /dev/null 2>&1 || exit 1
-CLI_LOCATION=$TOOL_DIRECTORY/cli-1.0-SNAPSHOT/bin/cli
-echo "done"
+curl -L -o datadog-static-analyzer.zip https://github.com/DataDog/datadog-static-analyzer/releases/latest/download/datadog-static-analyzer-x86_64-unknown-linux-gnu.zip >/dev/null 2>&1 || exit 1
+unzip datadog-static-analyzer >/dev/null 2>&1 || exit 1
+CLI_LOCATION=$TOOL_DIRECTORY/datadog-static-analyzer
 
 ########################################################
 # datadog-ci stuff
@@ -125,7 +135,7 @@ echo "done: will output results at ${OUTPUT_FILE}"
 ########################################################
 
 echo -n "Starting a static analysis ..."
-$CLI_LOCATION --directory "${PROJECT_ROOT}" -t true -o "${OUTPUT_FILE}" -f sarif || exit 1
+$CLI_LOCATION -i "${PROJECT_ROOT}" -o "$OUTPUT_FILE" -f sarif --cpus "$CPU_COUNT" "$ENABLE_PERFORMANCE_STATISTICS" || exit 1
 echo "done"
 
 # navigate to project root, so the datadog-ci command can access the git info

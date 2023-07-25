@@ -47,6 +47,8 @@ jobs:
       - checkout
       - datadog-static-analysis/analyze:
           service: my-service
+          cpu_count: 2
+          enable_performance_statistics: false
 workflows:
   main:
     jobs:
@@ -71,6 +73,8 @@ To customize your workflow, you can set the following parameters for Static Anal
 | `service` | The service you want your results tagged with.                                                                                | Yes     |                 |
 | `env`     | The environment you want your results tagged with. Datadog recommends using `ci` as the value for this input.                 | No    | `none`          |
 | `site`    | The [Datadog site][4] to send information to.                                                                                 | No    | `datadoghq.com` | 
+| `cpu_count`  | Set the number of CPUs used to by the analyzer.                                                                            | No      | `2`             |
+| `enable_performance_statistics` | Get the execution time statistics for analyzed files.                                                   | No      | `false`         |
 
 [1]: https://circleci.com/docs/set-environment-variable/#set-an-environment-variable-in-a-project
 [2]: https://docs.datadoghq.com/account_management/api-app-keys/#api-keys
