@@ -142,8 +142,6 @@ echo -n "Starting a static analysis ..."
 $CLI_LOCATION -g -i "${PROJECT_ROOT}" -o "$OUTPUT_FILE" -f sarif --cpus "$CPU_COUNT" "$ENABLE_PERFORMANCE_STATISTICS" || exit 1
 echo "done"
 
-cat "$OUTPUT_FILE"
-
 echo -n "Uploading results to Datadog ..."
 ${DATADOG_CLI_PATH} sarif upload "${OUTPUT_FILE}" --service "${DD_SERVICE}" --env "$DD_ENV" || exit 1
 echo "Done"
