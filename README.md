@@ -46,7 +46,7 @@ jobs:
       - datadog-static-analysis/analyze:
           service: "my-service"
           env: "ci"
-          site: datadoghq.com
+          site: {{< region-param key="dd_site" code="true" >}}
           cpu_count: 2
           enable_performance_statistics: false
 workflows:
