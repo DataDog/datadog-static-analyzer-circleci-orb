@@ -4,9 +4,7 @@
 
 ## Overview
 
-Run a Datadog Static Analysis job in your CircleCI workflows.
-
-Static Analysis is in private beta. To request access, [contact Support][5].
+Run a [Datadog Static Analysis][1] job in your CircleCI workflows.
 
 ## Setup
 
@@ -46,7 +44,9 @@ jobs:
     steps:
       - checkout
       - datadog-static-analysis/analyze:
-          service: my-service
+          service: "my-service"
+          env: "ci"
+          site: {{< region-param key="dd_site" code="true" >}}
           cpu_count: 2
           enable_performance_statistics: false
 workflows:
@@ -57,12 +57,12 @@ workflows:
 
 ### Environment variables
 
-Set the following environment variables in the [CircleCI Project Settings page][1].
+Set the following environment variables in the [CircleCI Project Settings page][2].
 
 | Name         | Description                                                                                                                | Required |
 |--------------|----------------------------------------------------------------------------------------------------------------------------|----------|
-| `DD_API_KEY` | Your Datadog API key. This key is created by your [Datadog organization][2] and should be stored as a secret.              | Yes     |
-| `DD_APP_KEY` | Your Datadog application key. This key is created by your [Datadog organization][3] and should be stored as a secret.      | Yes     |
+| `DD_API_KEY` | Your Datadog API key. This key is created by your [Datadog organization][3] and should be stored as a secret.              | Yes     |
+| `DD_APP_KEY` | Your Datadog application key. This key is created by your [Datadog organization][4] and should be stored as a secret.      | Yes     |
 
 ## Inputs
 
@@ -76,8 +76,13 @@ To customize your workflow, you can set the following parameters for Static Anal
 | `cpu_count`  | Set the number of CPUs used to by the analyzer.                                                                            | No      | `2`             |
 | `enable_performance_statistics` | Get the execution time statistics for analyzed files.                                                   | No      | `false`         |
 
-[1]: https://circleci.com/docs/set-environment-variable/#set-an-environment-variable-in-a-project
-[2]: https://docs.datadoghq.com/account_management/api-app-keys/#api-keys
-[3]: https://docs.datadoghq.com/account_management/api-app-keys/#application-keys
-[4]: https://docs.datadoghq.com/getting_started/site/
-[5]: https://docs.datadoghq.com/help/
+## Further Reading
+
+Additional helpful documentation, links, and articles:
+
+- [Learn about Code Analysis][1]
+
+[1]: https://docs.datadoghq.com/code_analysis/static_analysis
+[2]: https://circleci.com/docs/set-environment-variable/#set-an-environment-variable-in-a-project
+[3]: https://docs.datadoghq.com/account_management/api-app-keys/#api-keys
+[4]: https://docs.datadoghq.com/account_management/api-app-keys/#application-keys
