@@ -134,13 +134,13 @@ echo "done: will output results at ${OUTPUT_FILE}"
 # execute the tool and upload results
 ########################################################
 
-echo -n "Starting a static analysis ..."
-$CLI_LOCATION -i "${PROJECT_ROOT}" -o "$OUTPUT_FILE" -f sarif --cpus "$CPU_COUNT" "$ENABLE_PERFORMANCE_STATISTICS" || exit 1
-echo "done"
-
 # navigate to project root, so the datadog-ci command can access the git info
 cd "$PROJECT_ROOT" || exit 1
 git config --global --add safe.directory "${PROJECT_ROOT}" || exit 1
+
+echo -n "Starting a static analysis ..."
+$CLI_LOCATION -g -i "${PROJECT_ROOT}" -o "$OUTPUT_FILE" -f sarif --cpus "$CPU_COUNT" "$ENABLE_PERFORMANCE_STATISTICS" || exit 1
+echo "done"
 
 echo -n "Uploading results to Datadog ..."
 ${DATADOG_CLI_PATH} sarif upload "${OUTPUT_FILE}" --service "${DD_SERVICE}" --env "$DD_ENV" || exit 1
